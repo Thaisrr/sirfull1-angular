@@ -1,0 +1,16 @@
+<nav>
+  <!--
+  chemin actuel : monapp.com/admin/dashboard
+  /chemin : root -> monapp.com/chemin
+  chemin OU ./chemin : route enfant -> monapp.com/admin/dashboard/chemin
+  ../chemin : répertoire précédent -> monapp.com/admin/chemin
+  -->
+  <ul>
+    <li>
+      <a [routerLink]="['/presentation']">Présentation</a>
+    </li>
+    <li>
+      <a routerLink="/communication">Communication</a>
+    </li>
+  </ul>
+</nav>

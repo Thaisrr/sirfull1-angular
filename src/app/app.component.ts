@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import User from './utils/classe/User';
+import {Car} from "./utils/classe/Car";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sirfull1-angular';
 }

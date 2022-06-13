@@ -1,0 +1,166 @@
+<h1>Présentation</h1>
+
+
+<h2>Interpréter du JS :</h2>
+<p>{{ message }}</p>
+<p>1 + 1 = {{ 1 + 1 }}</p>
+<p>{{ message.toUpperCase() }}</p>
+<p>Dans les balises moustaches, on peut interpréter du JS, et accéder aux propriétés de la classe.</p>
+
+
+<h2>Accéder aux méthodes : événements</h2>
+
+<div>
+  <button (click)="sayHello()">Click</button>
+</div>
+
+<div style="background: aqua; height: 200px"
+     (mouseover)="handleHover()"
+     (click)="handleClickParent()"
+> Parent
+  <button (click)="handleClickEnfant($event)">Enfant</button>
+</div>
+
+
+<h2>Rendu Conditionnel</h2>
+
+<div>
+  <button (click)="toggleSecret()">
+    {{ (showSecret)? 'Afficher' : 'Masquer' }}
+  </button>
+</div>
+<p *ngIf="showSecret; else noSecret">Un secret très secret.</p>
+
+<ng-template #noSecret>
+  <p>Rien à voir ici.</p>
+</ng-template>
+
+<h3>Syntaxe 2</h3>
+
+<div *ngIf="showSecret; then secret else pasSecret"></div>
+<ng-template #secret>Mon secret</ng-template>
+<ng-template #pasSecret>Pas de secret</ng-template>
+
+
+<h2>Rendu de listes</h2>
+
+<ul>
+  <li *ngFor="let fruit of fruits">{{ fruit.name }}, {{fruit.price}}€</li>
+</ul>
+
+<ul>
+  <li *ngFor="let fruit of fruits;
+  let i = index;
+  let isFirst = first;
+  let isOdd = odd;
+  let isEven = even;
+  let isLast = last">
+    {{i}} {{fruit.name}},
+    premier element : {{isFirst}};
+    impaire : {{isOdd}};
+    paire : {{isEven}};
+    dernier : {{isLast}}
+  </li>
+</ul>
+
+<h2>Property Binding / Data Binding</h2>
+
+<p>Toutes les propriétés
+  et attributs HTML peuvent être bindé, si on les mets entre []</p>
+<img [src]="image.source" [alt]="image.alt" [id]="image.id"/>
+
+
+<h3>Les Classes</h3>
+<p [class]="(showSecret)? 'green' : 'red'">
+  S'affiche en rouge si le secret est caché, en vert si il est affiché
+</p>
+
+<p [ngClass]=" 'maclasse' ">Test</p>
+<p [ngClass]="['class1', 'classe2']">Test</p>
+<p [ngClass]="{'green' : showSecret, 'toto machin' : false}">Test</p>
+<p [class.green]="showSecret">Test 2</p>
+
+
+<h2>Les pipes</h2>
+
+<h3>Texte</h3>
+<p>{{ message | uppercase}}</p>
+<p>{{ message | titlecase}}</p>
+
+<h3>Dates</h3>
+<p>{{today}}</p>
+<p>{{today | date}}</p>
+<p>{{today | date : 'short'}}</p> <!-- short, medium, long, full -->
+<p>{{today | date : 'd/M/yyyy'}}</p>
+<p>{{today | date : 'H:mm:ss'}}</p>
+<p>{{today | date : 'h:mm:ss a'}}</p>
+<!--
+d : jour
+M : mois
+y : année
+m: minutes
+c : jour de la semaine
+a : am / pm
+
+h -> 1 -> 12
+hh -> 01 -> 12
+H -> 0 -> 23
+
+M -> mois 1 -> 12
+MM -> 01 -> 12
+MMM -> abréviation
+MMMM -> mot complet
+-->
+
+<h3>Numbers</h3>
+
+<p>{{PI}}</p>
+<!--
+nombre mini de chiffres AVANT la virgule
+.
+Nombre mini de chiffres APRES la virgule
+-
+Nombre maxi de chiffre apres la virgule
+-->
+<p>{{PI | number: '1.1-1'}}</p>
+<p>{{PI | number: '2.1-3'}}</p>
+<p>{{ 5 | number : '3.1-3'}}</p>
+
+<h3>Pipe personnalisé</h3>
+
+<p>{{message | rainbow | titlecase }}</p>
+<p>{{message | rainbow: param | titlecase }}</p>
+
+<h3>Pipe et ngFor</h3>
+
+
+<ul>
+  <li *ngFor="let f of fruits | arrayFilter">{{f.name}}</li>
+</ul>
+
+
+
+<h3>Tableau : </h3>
+<ul>
+  <li *ngFor="let f of fruits | arrayFilter: param">{{f.name}}</li>
+</ul>
+
+<button (click)="pushArray()">Modify Array</button>
+<button (click)="changeParam()">Modify Param</button>
+
+<h3>Pipes purs et impures</h3>
+
+<p>Les pipes impures s'executent à chaque modification du DOM. </p>
+
+<p>Les pipes pures ne s'éxécutent que si on redéfini les données qu'il surveille ( paramètre ou valeur ).
+  -> Si on les redéfini ( = ), et modification de référence.
+  ça ne fonctionne pas si on modifie le contenu d'un tableau ou d'un objet, sans changer sa référence.
+</p>
+
+<ul>
+  <li *ngFor="let f  of filterFruits()"></li>
+</ul>
+
+
+
+

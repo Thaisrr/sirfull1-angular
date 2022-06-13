@@ -1,0 +1,14 @@
+<h1>Communication Parent -> Enfant</h1>
+<p>Total : {{ total }}</p>
+
+<h2>Sans Input : </h2>
+<app-enfant (increment_event)="incrementTotal()" ></app-enfant>
+<app-enfant (increment_event)="incrementTotal()" ></app-enfant>
+
+<h2>Input</h2>
+<app-enfant (increment_event)="incrementTotal()"  [counter]="parent_counter"></app-enfant>
+<app-enfant
+  (modify_event)="handleModification($event)"
+  (increment_event)="incrementTotal()"
+  [counter]="100" [counter_name]="'Mon compteur'"></app-enfant>
+
