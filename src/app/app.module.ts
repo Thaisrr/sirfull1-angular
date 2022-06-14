@@ -14,6 +14,10 @@ import { EnfantComponent } from './components/enfant/enfant.component';
 import { FormulairesComponent } from './pages/formulaires/formulaires.component';
 import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.component';
 import { ServicesComponent } from './pages/services/services.component';
+import { ObservablesComponent } from './pages/observables/observables.component';
+import { RequetesComponent } from './pages/requetes/requetes.component';
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -27,13 +31,16 @@ import { ServicesComponent } from './pages/services/services.component';
     EnfantComponent,
     FormulairesComponent,
     ReactiveFormComponent,
-    ServicesComponent
+    ServicesComponent,
+    ObservablesComponent,
+    RequetesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import {ExempleService} from "../../utils/services/exemple.service";
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css']
 })
-export class ServicesComponent implements OnInit {
+export class ServicesComponent {
 
-  constructor() { }
+  newMessage = '';
+  products = ['Furby', 'Barbie', 'Carte Pokemon'];
 
-  ngOnInit(): void {
+
+
+  constructor(public exempleService: ExempleService) { }
+
+  modifyMessage() {
+    if(this.newMessage) {
+      this.exempleService.modifyMessage(this.newMessage);
+    }
   }
+
+  addBasket(product: string) {
+    this.exempleService.addToBasket(product);
+  }
+
+
+
 
 }

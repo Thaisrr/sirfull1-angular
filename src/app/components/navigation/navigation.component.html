@@ -6,6 +6,7 @@
   ../chemin : répertoire précédent -> monapp.com/admin/chemin
   -->
   <ul>
+    <li>Panier : {{exempleService.panier.length}}</li>
     <li>
       <a [routerLink]="['/presentation']">Présentation</a>
     </li>
@@ -20,6 +21,12 @@
     </li>
     <li>
       <a routerLink="/services">Services</a>
+    </li>
+    <li>
+      <a routerLink="/observables">Observables</a>
+    </li>
+    <li>
+      <a routerLink="/requetes">Requêtes</a>
     </li>
   </ul>
 </nav>

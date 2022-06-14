@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import User from "../../utils/classe/User";
 import {Car} from "../../utils/classe/Car";
+import {ExempleService} from "../../utils/services/exemple.service";
 
 @Component({
   selector: 'app-presentation',
@@ -42,7 +43,7 @@ export class PresentationComponent {
 
 
 
-  constructor() {
+  constructor(public exempleService: ExempleService) {
     //  this.nom = 'Toto';
   }
 

@@ -1,0 +1,20 @@
+<h1>Requêtes</h1>
+
+<div *ngIf="joke_obj &&!isLoading">
+  <p>{{this.joke_obj.joke}}</p>
+</div>
+
+<p *ngIf="isLoading">Loading...</p>
+<p *ngIf="!isLoading && !joke_obj">
+  Rien à voir ici
+</p>
+
+
+<h2>Photos</h2>
+
+<div class="grid" *ngIf="pictures && pictures.length > 0">
+  <figure *ngFor="let pic of pictures">
+    <img [src]="pic.thumbnailUrl" alt="">
+    <figcaption>{{pic.title}}</figcaption>
+  </figure>
+</div>
