@@ -1,0 +1,104 @@
+<h1>Formulaires Réactifs</h1>
+
+<h2>Simple</h2>
+
+<form (ngSubmit)="submitFavorite()">
+  <p>
+    <label for="fav">Book Title</label>
+    <input class="control" [formControl]="favorite_book_control" id="fav">
+    <button type="submit">Save</button>
+  </p>
+  <p *ngIf="favorite_book_control.touched">
+    <span *ngIf="favorite_book_control.hasError('required')">
+      Ce champs est obligatoire
+    </span>
+    <span *ngIf="favorite_book_control.hasError('minlength')">
+      Le titre du livre doit faire au moins 3 caractères
+    </span>
+  </p>
+  <p *ngIf="favorite">Mon livre : {{favorite}}</p>
+
+  <ul> Evenements :
+    <li>Dirty : l'input a dejà reçu une intéraction</li>
+    <li>Touched : l'input à déjà perdu le focus</li>
+    <li>Untouched : l'input n'a jamais perdu le focus</li>
+    <li>Pristine : l'input n'a jamais reçu d'intéraction</li>
+  </ul>
+</form>
+
+
+<h2>Form</h2>
+
+<form [formGroup]="user_form" (ngSubmit)="submitUser()">
+  <p>
+    <input formControlName="name" placeholder="name">
+  </p>
+  <p>
+    <input formControlName="email" placeholder="email">
+  </p>
+  <fieldset formGroupName="address">
+    <legend>Address</legend>
+    <p>
+      <input formControlName="number" placeholder="number">
+    </p>
+    <p>
+      <input formControlName="street" placeholder="street">
+    </p>
+    <p>
+      <input formControlName="city" placeholder="city">
+    </p>
+
+  </fieldset>
+  <p>
+    <button [disabled]="user_form.invalid" type="submit">Login</button>
+    <button type="button" (click)="updateUser()">Auto set value</button>
+  </p>
+</form>
+
+<h2>FormBuilder</h2>
+
+<form [formGroup]="formation_form" (ngSubmit)="saveFormation()">
+  <p>
+    <input  formControlName="title">
+    <small
+      style="color: red"
+      *ngIf="formation_form.controls['title'].touched
+      && formation_form.controls?.title?.hasError('required')">
+      Veuillez entrer un titre
+    </small>
+  </p>
+  <p>
+    <input formControlName="description">
+  </p>
+  <fieldset formArrayName="participants">
+    <legend>Participants⋅es</legend>
+
+
+    <p *ngFor="let part of participants.controls; let i = index ">
+      <input [formControlName]="i" placeholder="Nom du participant">
+    </p>
+    <p>
+      <button type="button" (click)="addParticipant()">Add participant</button>
+    </p>
+  </fieldset>
+
+  <div formArrayName="formateurs">
+    <h5>Formateurs⋅trices</h5>
+
+    <fieldset *ngFor="let form of formateurs.controls; let i = index" [formGroupName]="i">
+      <legend>Formateur {{i}}</legend>
+      <p>
+        <input formControlName="firstname" placeholder="Prénom">
+      </p>
+      <p>
+        <input formControlName="lastname" placeholder="Nom">
+      </p>
+    </fieldset>
+
+    <p>
+      <button type="button" (click)="addFormateur()">Ajouter un formateur</button>
+    </p>
+
+  </div>
+  <button [disabled]="formation_form.invalid" type="submit">Save</button>
+</form>

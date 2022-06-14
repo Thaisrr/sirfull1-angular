@@ -18,5 +18,4 @@ export class CommunicationComponent {
     console.log('Enfant is now : ', event);
   }
 
-
 }

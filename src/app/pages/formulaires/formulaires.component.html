@@ -1,0 +1,40 @@
+<h1>Les formulaires</h1>
+
+<h2>NgModel : Template Driven Forms</h2>
+
+<h3>Simple</h3>
+
+<h4>Fonctionnement en JS</h4>
+<p>
+  <input id="value" [value]="mavaleur" (input)="modifyValue()">
+</p>
+<p>Value = {{mavaleur}}</p>
+
+
+<h4>Ecriture en Angular</h4>
+<p>
+  <label for="search">Rechercher : </label>
+  <input id="search" type="search" [(ngModel)]="search_str">
+  <button (click)="submitSearch()">Search</button>
+</p>
+<p>Vous avez recherché : {{search_str}} </p>
+
+
+<h3>Dans un Formulaire</h3>
+
+<form (ngSubmit)="login()">
+  <p>
+    <label for="nom">Nom</label>
+    <input id="nom" [(ngModel)]="user.name" name="nom">
+  </p>
+  <p>
+    <label for="email">Email</label>
+    <input (blur)="checkEmail()" id="email" [(ngModel)]="user.email" name="email">
+    <small *ngIf="email_error" style="color: red">Veuillez entrer un email</small>
+  </p>
+  <p>
+    <button type="submit">S'inscrire</button>
+  </p>
+
+</form>
+

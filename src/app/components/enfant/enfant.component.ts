@@ -19,8 +19,4 @@ export class EnfantComponent {
     this.modify_event.emit(this.counter);
   }
 
-
-
-
-
 }

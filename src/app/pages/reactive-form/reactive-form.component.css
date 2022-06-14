@@ -1,0 +1,17 @@
+/*
+.control.ng-pristine {
+  border: solid purple;
+}
+
+.control.ng-dirty {
+  background: aqua;
+}
+
+.control.ng-invalid {
+  outline: solid tomato;
+}
+*/
+
+.control.ng-touched.ng-invalid {
+  border: solid red;
+}
