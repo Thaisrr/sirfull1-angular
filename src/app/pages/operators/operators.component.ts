@@ -7,12 +7,13 @@ import {
   filter,
   finalize,
   first,
-  map, pluck,
+  map, pluck, switchMap,
   take,
   tap,
   toArray
 } from "rxjs/operators";
 import {createLogErrorHandler} from "@angular/compiler-cli/ngcc/src/execution/tasks/completion";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-operators',
@@ -47,7 +48,11 @@ export class OperatorsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   search_value: string = '';
 
+  constructor(private route: ActivatedRoute) {
+  }
+
   ngOnInit(): void {
+    this.getIdParams();
 
     this.foo$.pipe(
       distinctUntilChanged()
@@ -139,5 +144,39 @@ export class OperatorsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
    }
 
+
+   getIdParams() {
+     console.log('Route : ', this.route);
+     /*
+     Méthode à éviter :
+     this.route.paramMap.subscribe({
+       next: params => {
+           console.log('------ ID : ', params.get('id'))
+           this.getByIdService(Number(params.get('id')))
+             .subscribe({
+               next: message => console.log(message),
+               complete: () => console.warn('get by id terminé')
+             })
+          },
+       complete: () => console.warn('Param terminé')
+     });
+*/
+
+     this.route.paramMap.pipe(
+       map(params => Number(params.get('id'))),
+       switchMap(id => this.getByIdService(id)), // coupe l'observable précédent
+       tap(data => console.warn('---------', data))
+     ).subscribe(data => console.error('Subscribe : ', data))
+
+
+     /* Query strings */
+     this.route.queryParams.pipe(
+       filter(params => params.vue)
+     ).subscribe(params => console.log('------------------ string params : ', params.vue))
+   }
+
+   getByIdService(id: Number): Observable<string> {
+    return of('coucou');
+   }
 
 }

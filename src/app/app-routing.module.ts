@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'services', component: ServicesComponent},
   {path: 'observables', component: ObservablesComponent},
   {path: 'requetes', component: RequetesComponent},
-  {path: 'operators', component: OperatorsComponent},
+  {path: 'operators/:id', component: OperatorsComponent},
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},
