@@ -8,6 +8,7 @@ import {ReactiveFormComponent} from "./pages/reactive-form/reactive-form.compone
 import {ServicesComponent} from "./pages/services/services.component";
 import {ObservablesComponent} from "./pages/observables/observables.component";
 import {RequetesComponent} from "./pages/requetes/requetes.component";
+import {OperatorsComponent} from "./pages/operators/operators.component";
 
 const routes: Routes = [
   {path: 'presentation', component: PresentationComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'services', component: ServicesComponent},
   {path: 'observables', component: ObservablesComponent},
   {path: 'requetes', component: RequetesComponent},
+  {path: 'operators', component: OperatorsComponent},
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},

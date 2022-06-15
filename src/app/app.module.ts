@@ -17,6 +17,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ObservablesComponent } from './pages/observables/observables.component';
 import { RequetesComponent } from './pages/requetes/requetes.component';
 import {HttpClientModule} from "@angular/common/http";
+import { OperatorsComponent } from './pages/operators/operators.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormComponent,
     ServicesComponent,
     ObservablesComponent,
-    RequetesComponent
+    RequetesComponent,
+    OperatorsComponent
   ],
   imports: [
     BrowserModule,
