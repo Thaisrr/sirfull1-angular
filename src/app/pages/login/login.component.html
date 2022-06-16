@@ -1,0 +1,19 @@
+<h1>Login</h1>
+
+<form [formGroup]="credential_form" (ngSubmit)="login()">
+  <div>
+    <label for="email">Email</label>
+    <input formControlName="email" id="email">
+  </div>
+  <div>
+    <label for="pwd">Password</label>
+    <input formControlName="password" id="pwd">
+  </div>
+  <div>
+    <label for="stay">Rester connecté ? </label>
+    <input type="checkbox" [formControl]="stayLogged" id="stay">
+  </div>
+  <div>
+    <button type="submit">Connection</button>
+  </div>
+</form>
