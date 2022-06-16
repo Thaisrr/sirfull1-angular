@@ -87,7 +87,6 @@ export class SubjectComponent implements OnInit {
     async.complete();
   }
 
-
   modifyPanier() {
     this.exempleService.addToBasket('t');
   }

@@ -10,6 +10,7 @@ import {ObservablesComponent} from "./pages/observables/observables.component";
 import {RequetesComponent} from "./pages/requetes/requetes.component";
 import {OperatorsComponent} from "./pages/operators/operators.component";
 import {SubjectComponent} from "./pages/subject/subject.component";
+import {LoginComponent} from "./pages/login/login.component";
 
 const routes: Routes = [
   {path: 'presentation', component: PresentationComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'requetes', component: RequetesComponent},
   {path: 'operators/:id', component: OperatorsComponent},
   {path: 'subjects', component: SubjectComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},

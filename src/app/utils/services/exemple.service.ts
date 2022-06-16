@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +42,5 @@ export class ExempleService {
   updateStorate() {
     localStorage.setItem(this.storage_name, JSON.stringify(this.panier));
   }
+
 }

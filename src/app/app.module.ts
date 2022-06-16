@@ -19,6 +19,7 @@ import { RequetesComponent } from './pages/requetes/requetes.component';
 import {HttpClientModule} from "@angular/common/http";
 import { OperatorsComponent } from './pages/operators/operators.component';
 import { SubjectComponent } from './pages/subject/subject.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SubjectComponent } from './pages/subject/subject.component';
     ObservablesComponent,
     RequetesComponent,
     OperatorsComponent,
-    SubjectComponent
+    SubjectComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
