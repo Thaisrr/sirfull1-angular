@@ -18,6 +18,7 @@ import { ObservablesComponent } from './pages/observables/observables.component'
 import { RequetesComponent } from './pages/requetes/requetes.component';
 import {HttpClientModule} from "@angular/common/http";
 import { OperatorsComponent } from './pages/operators/operators.component';
+import { SubjectComponent } from './pages/subject/subject.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { OperatorsComponent } from './pages/operators/operators.component';
     ServicesComponent,
     ObservablesComponent,
     RequetesComponent,
-    OperatorsComponent
+    OperatorsComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,

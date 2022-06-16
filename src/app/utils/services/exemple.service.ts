@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class ExempleService {
   message = 'Bonjour le monde';
   panier: string[] = [];
+  panier$ =  new Subject<string[]>();
   storage_name = 'panier';
 
   constructor() {
@@ -17,8 +19,12 @@ export class ExempleService {
   }
 
   addToBasket(item: string) {
+    // Panier 1
     this.panier.push(item);
     this.updateStorate();
+
+    // Panier subject
+    this.panier$.next(this.panier);
   }
 
   removeFromBasket(el: number) {
