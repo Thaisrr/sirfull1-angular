@@ -42,4 +42,6 @@ export class PhotoService {
     return this.http.delete(`${this.api_url}/${id}`, {})
   }
 
+
+
 }

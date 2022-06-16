@@ -16,10 +16,12 @@ import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.compo
 import { ServicesComponent } from './pages/services/services.component';
 import { ObservablesComponent } from './pages/observables/observables.component';
 import { RequetesComponent } from './pages/requetes/requetes.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { OperatorsComponent } from './pages/operators/operators.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SecretComponent } from './pages/secret/secret.component';
+import {JWTInterceptor} from "./utils/interceptors/jwt.interceptor";
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { LoginComponent } from './pages/login/login.component';
     RequetesComponent,
     OperatorsComponent,
     SubjectComponent,
-    LoginComponent
+    LoginComponent,
+    SecretComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,9 @@ import { LoginComponent } from './pages/login/login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

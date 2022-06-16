@@ -43,4 +43,6 @@ export class ExempleService {
     localStorage.setItem(this.storage_name, JSON.stringify(this.panier));
   }
 
+
+
 }

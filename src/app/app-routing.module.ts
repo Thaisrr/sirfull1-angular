@@ -11,6 +11,9 @@ import {RequetesComponent} from "./pages/requetes/requetes.component";
 import {OperatorsComponent} from "./pages/operators/operators.component";
 import {SubjectComponent} from "./pages/subject/subject.component";
 import {LoginComponent} from "./pages/login/login.component";
+import {SecretComponent} from "./pages/secret/secret.component";
+import {IsNotLoggedGuard} from "./utils/guards/is-not-logged.guard";
+import {IsReadyToGoGuard} from "./utils/guards/is-ready-to-go.guard";
 
 const routes: Routes = [
   {path: 'presentation', component: PresentationComponent},
@@ -23,6 +26,12 @@ const routes: Routes = [
   {path: 'operators/:id', component: OperatorsComponent},
   {path: 'subjects', component: SubjectComponent},
   {path: 'login', component: LoginComponent},
+  {
+    path: 'secret',
+    component: SecretComponent,
+    canActivate: [IsNotLoggedGuard],
+    canDeactivate: [IsReadyToGoGuard]
+  },
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},

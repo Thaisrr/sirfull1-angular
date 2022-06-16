@@ -38,6 +38,9 @@
       <a routerLink="/login">Login</a>
     </li>
     <li>
+      <a routerLink="/secret">Secret</a>
+    </li>
+    <li>
       <button *ngIf="authService.isLogged" (click)="authService.logout()">Déconnexion</button>
     </li>
   </ul>
