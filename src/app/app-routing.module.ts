@@ -39,6 +39,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/user.module').then(m => m.UserModule),
     data: {preload: true}
   },
+  {path: 'lifecycle', loadChildren: () => import('./lifecycle/lifecycle.module').then(m => m.LifecycleModule)},
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},
@@ -48,7 +49,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
-    {preloadingStrategy: CustomPreloadingStrategyService, enableTracing: true})],
+    {preloadingStrategy: CustomPreloadingStrategyService, enableTracing: false})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
