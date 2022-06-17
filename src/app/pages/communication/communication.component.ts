@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-communication',
   templateUrl: './communication.component.html',
-  styleUrls: ['./communication.component.css']
+  styleUrls: ['./communication.component.css'],
+  encapsulation:ViewEncapsulation.ShadowDom
 })
 export class CommunicationComponent {
 

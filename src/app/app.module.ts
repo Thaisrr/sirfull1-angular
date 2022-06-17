@@ -22,6 +22,7 @@ import { SubjectComponent } from './pages/subject/subject.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SecretComponent } from './pages/secret/secret.component';
 import {JWTInterceptor} from "./utils/interceptors/jwt.interceptor";
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {JWTInterceptor} from "./utils/interceptors/jwt.interceptor";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AdminModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true},

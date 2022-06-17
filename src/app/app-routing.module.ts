@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {PresentationComponent} from "./pages/presentation/presentation.component";
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {CommunicationComponent} from "./pages/communication/communication.component";
@@ -14,6 +14,7 @@ import {LoginComponent} from "./pages/login/login.component";
 import {SecretComponent} from "./pages/secret/secret.component";
 import {IsNotLoggedGuard} from "./utils/guards/is-not-logged.guard";
 import {IsReadyToGoGuard} from "./utils/guards/is-ready-to-go.guard";
+import {CustomPreloadingStrategyService} from "./utils/services/custom-preloading-strategy.service";
 
 const routes: Routes = [
   {path: 'presentation', component: PresentationComponent},
@@ -32,6 +33,12 @@ const routes: Routes = [
     canActivate: [IsNotLoggedGuard],
     canDeactivate: [IsReadyToGoGuard]
   },
+  {path: 'test', loadChildren: () => import('./test/test.module').then(m => m.TestModule)},
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    data: {preload: true}
+  },
   {path: '', redirectTo: 'presentation', pathMatch: 'full'},
   {path: 'accueil', redirectTo: 'presentation'},
   {path: '404', component: PageNotFoundComponent},
@@ -40,7 +47,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {preloadingStrategy: CustomPreloadingStrategyService, enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

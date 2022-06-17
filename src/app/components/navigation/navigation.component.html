@@ -41,6 +41,15 @@
       <a routerLink="/secret">Secret</a>
     </li>
     <li>
+      <a routerLink="/test">Test Module</a>
+    </li>
+    <li>
+      <a routerLink="/user">Users</a>
+    </li>
+    <li>
+      <a routerLink="/lifecycle">Lifecycle</a>
+    </li>
+    <li>
       <button *ngIf="authService.isLogged" (click)="authService.logout()">Déconnexion</button>
     </li>
   </ul>

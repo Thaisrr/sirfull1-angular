@@ -1,0 +1,10 @@
+<h1>Users</h1>
+
+<ul *ngIf="users; else noUsers">
+  <li *ngFor="let u of users">{{u.name}}</li>
+</ul>
+<ng-template #noUsers>
+  <p>Aucun users</p>
+</ng-template>
+
+<app-page1></app-page1>

@@ -1,6 +1,12 @@
 <app-navigation></app-navigation>
 
-<router-outlet></router-outlet>
+<div  class="loader" *ngIf="loading">
+  Chargement....
+</div>
+<div *ngIf="!loading">
+  <router-outlet></router-outlet>
+</div>
+
 
 <footer>
   <hr>
